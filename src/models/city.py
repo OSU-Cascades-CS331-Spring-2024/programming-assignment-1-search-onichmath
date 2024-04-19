@@ -16,6 +16,15 @@ class City:
         return self.latitude
 
 
+    @staticmethod
+    def polar_to_cartesian(longitude, latitude):
+        x = math.cos(math.radians(latitude)) * math.cos(math.radians(longitude))
+        y = math.cos(math.radians(latitude)) * math.sin(math.radians(longitude))
+        z = math.sin(math.radians(latitude))
+        return x, y, z
+
+
+
     @classmethod
     def from_string(cls, string):
         parts = string.split(" --> ")
