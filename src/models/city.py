@@ -15,6 +15,8 @@ class City:
     def get_latitude(self):
         return self.latitude
 
+    def get_cartesian_coordinates(self):
+        return self.polar_to_cartesian(self.longitude, self.latitude)
 
     @staticmethod
     def polar_to_cartesian(longitude, latitude):
