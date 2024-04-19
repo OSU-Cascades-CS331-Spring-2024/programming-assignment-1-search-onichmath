@@ -25,7 +25,6 @@ class City:
         z = math.sin(math.radians(latitude))
         return x, y, z
 
-
     @staticmethod
     def degrees_to_decimal(degrees, minutes, seconds, direction):
         if direction in ['S', 'W']:
@@ -41,8 +40,8 @@ class City:
         lat_degrees, lat_minutes, lat_seconds, lat_direction = city_info[1:5]
         lon_degrees, lon_minutes, lon_seconds, lon_direction = city_info[5:]
 
-        latitude = float(lat_degrees) + float(lat_minutes) / 60 + float(lat_seconds) / 3600
-        longitude = float(lon_degrees) + float(lon_minutes) / 60 + float(lon_seconds) / 3600
+        latitude = cls.degrees_to_decimal(lat_degrees, lat_minutes, lat_seconds, lat_direction)
+        longitude = cls.degrees_to_decimal(lon_degrees, lon_minutes, lon_seconds, lon_direction)
 
         print(name, longitude, latitude)
         return cls(name, longitude, latitude)
