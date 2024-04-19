@@ -1,13 +1,17 @@
 import math
+import sys
 
 class City:
     def __init__(self, name, longitude, latitude):
         self.name = name
-        self.longitude = longitude
         self.latitude = latitude
+        self.longitude = longitude
 
     def __str__(self):
         return self.name
+
+    def __repr__(self):
+        return f"City(name={self.name}, latitude={self.latitude}, longitude={self.longitude})"
 
     def get_longitude(self):
         return self.longitude
@@ -43,6 +47,5 @@ class City:
         latitude = cls.degrees_to_decimal(lat_degrees, lat_minutes, lat_seconds, lat_direction)
         longitude = cls.degrees_to_decimal(lon_degrees, lon_minutes, lon_seconds, lon_direction)
 
-        print(name, longitude, latitude)
         return cls(name, longitude, latitude)
 
