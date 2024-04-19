@@ -52,12 +52,18 @@ class City:
 
     @staticmethod
     def degrees_to_decimal(degrees, minutes, seconds, direction):
+        """
+        Converts degrees, minutes, seconds to decimal degrees
+        """
         if direction in ['S', 'W']:
             return -1 * (float(degrees) + float(minutes) / 60 + float(seconds) / 3600)
         return float(degrees) + float(minutes) / 60 + float(seconds) / 3600
 
     @classmethod
     def from_string(cls, string):
+        """
+        Creates a city object from a string
+        """
         parts = string.split(" --> ")
 
         city_info = parts[0].split()
