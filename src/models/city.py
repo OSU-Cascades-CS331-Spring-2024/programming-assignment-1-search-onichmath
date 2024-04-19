@@ -2,13 +2,14 @@ import math
 import sys
 
 class City:
-    def __init__(self, name, longitude, latitude):
+    def __init__(self, name, longitude, latitude, connections):
         """
         Initializes a city with a name, longitude, and latitude
         """
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
+        self.connections = connections
 
     def __str__(self):
         """
@@ -20,7 +21,7 @@ class City:
         """
         Returns a string representation of the city
         """
-        return f"City(name={self.name}, latitude={self.latitude}, longitude={self.longitude})"
+        return f"City(name={self.name}, latitude={self.latitude}, longitude={self.longitude}, connections={self.connections})"
 
     def get_longitude(self):
         """
@@ -68,13 +69,17 @@ class City:
 
         city_info = parts[0].split()
         name = city_info[0]
+
         lat_degrees, lat_minutes, lat_seconds, lat_direction = city_info[1:5]
         lon_degrees, lon_minutes, lon_seconds, lon_direction = city_info[5:]
 
         latitude = cls.degrees_to_decimal(lat_degrees, lat_minutes, lat_seconds, lat_direction)
         longitude = cls.degrees_to_decimal(lon_degrees, lon_minutes, lon_seconds, lon_direction)
 
-        return cls(name, longitude, latitude)
+        connections_info = parts[1].split()
+        connections = {connections_info[i]: float(connections_info[i + 1]) for i in range(0, len(connections_info), 2)}
+    
+        return cls(name, longitude, latitude, connections) 
 
 if __name__ == "__main__":
     if (len(sys.argv) < 2):
