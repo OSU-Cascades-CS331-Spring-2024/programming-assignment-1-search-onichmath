@@ -3,14 +3,23 @@ import sys
 
 class City:
     def __init__(self, name, longitude, latitude):
+        """
+        Initializes a city with a name, longitude, and latitude
+        """
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
 
     def __str__(self):
+        """
+        Returns the name of the city
+        """
         return self.name
 
     def __repr__(self):
+        """
+        Returns a string representation of the city
+        """
         return f"City(name={self.name}, latitude={self.latitude}, longitude={self.longitude})"
 
     def get_longitude(self):
