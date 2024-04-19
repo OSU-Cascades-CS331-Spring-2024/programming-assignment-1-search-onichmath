@@ -26,6 +26,11 @@ class City:
         return x, y, z
 
 
+    @staticmethod
+    def degrees_to_decimal(degrees, minutes, seconds, direction):
+        if direction in ['S', 'W']:
+            return -1 * (float(degrees) + float(minutes) / 60 + float(seconds) / 3600)
+        return float(degrees) + float(minutes) / 60 + float(seconds) / 3600
 
     @classmethod
     def from_string(cls, string):
