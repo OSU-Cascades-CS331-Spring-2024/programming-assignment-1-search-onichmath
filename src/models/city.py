@@ -23,16 +23,28 @@ class City:
         return f"City(name={self.name}, latitude={self.latitude}, longitude={self.longitude})"
 
     def get_longitude(self):
+        """
+        Returns the longitude of the city
+        """
         return self.longitude
 
     def get_latitude(self):
+        """
+        Returns the latitude of the city
+        """
         return self.latitude
 
     def get_cartesian_coordinates(self):
+        """
+        Returns the cartesian coordinates of the city
+        """
         return self.polar_to_cartesian(self.longitude, self.latitude)
 
     @staticmethod
     def polar_to_cartesian(longitude, latitude):
+        """
+        Converts spherical polar coordinates to cartesian coordinates
+        """
         x = math.cos(math.radians(latitude)) * math.cos(math.radians(longitude))
         y = math.cos(math.radians(latitude)) * math.sin(math.radians(longitude))
         z = math.sin(math.radians(latitude))
