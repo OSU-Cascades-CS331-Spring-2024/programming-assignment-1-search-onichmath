@@ -1,5 +1,5 @@
 import sys
-from city import City
+from models.city import City
 
 class Map:
     def __init__(self, cities):
@@ -22,7 +22,7 @@ class Map:
 
     @staticmethod 
     def map_lines_from_filename(file_name):
-        file_path = "../../map_data/" + file_name + ".txt"
+        file_path = "../map_data/" + file_name + ".txt"
         try:
             with open(file_path, "r") as f:
                 lines = f.readlines()

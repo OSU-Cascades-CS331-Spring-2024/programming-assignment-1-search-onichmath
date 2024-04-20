@@ -1,3 +1,4 @@
+from models.city import City
 class Problem():
     def __init__(self, start_city_name, goal_city_name, map):
         """
@@ -30,3 +31,16 @@ class Problem():
         Returns the cost of the given action
         """
         return state.get_cost(state_prime)
+
+    def expand(self, state):
+        """
+
+        """
+        s = state
+        for action in self.actions(state):
+            s_prime = self.result(s, action)
+            print(s_prime)
+            c = self.action_cost(s, s_prime)
+            s_prime.cost = c
+            s_prime.parent = s
+            yield s_prime
