@@ -51,7 +51,7 @@ class BFS(Agent):
             self.explored += 1
 
             for child in problem.expand(node):
-                s = child.state
+                s = child
 
                 if problem.goal_test(s):
                     self.maintained = len(frontier)
