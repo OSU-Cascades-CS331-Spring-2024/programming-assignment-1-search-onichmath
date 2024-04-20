@@ -41,9 +41,12 @@ class BFS(Agent):
         reached = set([node])
 
         while frontier:
-            pass
-
-
-
-        
-
+            node = frontier.pop(0)
+            for child in problem.expand(node):
+                s = child.state
+                if problem.goal_test(s):
+                    return child
+                if s not in reached:
+                    reached.add(s)
+                    frontier.append(child)
+        return None
