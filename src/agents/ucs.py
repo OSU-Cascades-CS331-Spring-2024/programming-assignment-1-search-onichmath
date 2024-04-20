@@ -27,7 +27,8 @@ class UCSAgent(Agent):
 
     def search(self, problem):
         """
-        Searches the problem for a solution
+        Searches the problem for a solution using uniform cost search
+        Uniform cost search uses best-first search w/ path cost as the priority
         """
         # Initialize the frontier with the initial node
         node = Node(problem.start_state, 0, [problem.start_state.name])
@@ -39,9 +40,9 @@ class UCSAgent(Agent):
 
         while frontier:
             node = heapq.heappop(frontier)[1]
-            print(node)
 
             self.explored += 1
+
             if problem.goal_test(node.state):
                 self.maintained = len(reached)
                 self.cost = node.path_cost
