@@ -25,3 +25,15 @@ class UCSAgent(Agent):
     def __init__(self):
         super().__init__()
 
+    def search(self, problem):
+        """
+        Searches the problem for a solution
+        """
+        # Initialize the frontier with the initial node
+        node = Node(problem.start_state, 0, [problem.start_state.name])
+
+        frontier = [[node.path_cost, node]]
+        heapq.heapify(frontier)
+
+        reached = {node.state: node}
+
