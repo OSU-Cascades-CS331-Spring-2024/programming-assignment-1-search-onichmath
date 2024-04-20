@@ -4,7 +4,7 @@ import sys
 class City:
     def __init__(self, name, longitude, latitude, connections):
         """
-        Initializes a city with a name, longitude, and latitude
+        Initializes a city with a name, longitude, latitude, and connections
         """
         self.name = name
         self.latitude = latitude
@@ -34,6 +34,18 @@ class City:
         Returns the latitude of the city
         """
         return self.latitude
+
+    def get_cost(self, city):
+        """
+        Returns the cost of traveling to a city
+        """
+        return self.connections[city]
+
+    def get_connections(self):
+        """
+        Returns the connections of the city
+        """
+        return self.connections
 
     def get_cartesian_coordinates(self):
         """
