@@ -10,6 +10,9 @@ class Problem():
         self.goal_state = goal_city_name
         self.map = map
 
+    def __str__(self):
+        return f"Problem: {self.start_state} -> {self.goal_state}"
+
     def actions(self, state):
         """
         Returns the possible actions from the given state
