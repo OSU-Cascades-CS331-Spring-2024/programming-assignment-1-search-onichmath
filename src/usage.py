@@ -1,7 +1,7 @@
 import os
 
 def usage():
-    print("Usage: python main.py -M <map_name> -A <start_city> -B <end_city> -S <search_algorithm>")
+    print("Usage:\npython main.py -M <map_name> -A <start_city> -B <end_city> -S <search_algorithm>")
 
 def get_maps():
     maps = os.listdir("../map_data")
@@ -18,7 +18,7 @@ def list_maps_and_cities():
             for line in lines:
                 city = line.split(" ")[0]
                 cities.append(city)
-        print(f"Map: {map.split('.')[0]}")
+        print(f"Map:\n{map.split('.')[0]}")
         print("Cities:")
         for i in range(0, len(cities), 5):
             print(f"{' '.join(cities[i:i+5])}")
@@ -28,7 +28,7 @@ def list_maps_and_cities():
 def help():
     usage()
     list_maps_and_cities()
-    print("Search algorithms: bfs, iddls, ucs, astar")
+    print("Search algorithms:\nbfs, iddls, ucs, astar")
 
 if __name__ == "__main__":
     help()
