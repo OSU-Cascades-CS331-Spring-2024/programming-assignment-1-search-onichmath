@@ -31,3 +31,13 @@ class IDDLSAgent(Agent):
         Initializes the agent
         """
         super().__init__()
+
+    def generate_infinite_numbers(self):
+        """
+        Generates an infinite sequence of numbers
+        """
+        i = 0
+        while True:
+            yield i
+            i += 1
+
