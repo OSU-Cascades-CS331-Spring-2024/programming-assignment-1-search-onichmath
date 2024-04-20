@@ -1,4 +1,6 @@
 from models.city import City
+from models.node import Node
+
 class Problem():
     def __init__(self, start_city_name, goal_city_name, map):
         """
@@ -18,7 +20,7 @@ class Problem():
         """
         Returns whether the given state is the goal state
         """
-        return state.name == self.goal_state
+        return state == self.goal_state
 
     def result(self, state, action):
         """
@@ -30,17 +32,14 @@ class Problem():
         """
         Returns the cost of the given action
         """
-        return state.get_cost(state_prime)
+        return state.get_cost(state_prime.name)
 
-    def expand(self, state):
+    def expand(self, node):
         """
 
         """
-        s = state
-        for action in self.actions(state):
-            s_prime = self.result(s, action)
-            print(s_prime)
-            c = self.action_cost(s, s_prime)
-            s_prime.cost = c
-            s_prime.parent = s
-            yield s_prime
+        s = node.state
+        for action in self.actions(s):
+            s_prime = self.map.get_city(self.result(s, action))
+            c = node.path_cost + self.action_cost(s, s_prime)
+            yield Node(s_prime, c, node.path + [s_prime.name])
