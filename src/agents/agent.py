@@ -14,3 +14,13 @@ class Agent:
         self.explored = 0 
         self.expanded = 0 
         self.maintained = 0
+
+    def reset_agent(self):
+        """
+        Resets the agent's path, cost, and metrics
+        """
+        self.current_path = [] 
+        self.current_cost = 0 
+        self.explored = 0 
+        self.expanded = 0 
+        self.maintained = 0
