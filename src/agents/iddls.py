@@ -41,3 +41,20 @@ class IDDLSAgent(Agent):
             yield i
             i += 1
 
+    def depth_limited_search(self, problem, limit):
+        """
+        Searches the problem for a solution using depth-limited search
+        """
+        pass
+
+    def search(self, problem):
+        """
+        Searches the problem for a solution using iterative deepening depth-limited search
+        Iterative deepening depth-limited search uses depth-limited search with increasing depths
+        """
+        for depth in self.generate_infinite_numbers():
+            result = self.depth_limited_search(problem, depth)
+            if result != "cutoff":
+                return result
+
+
