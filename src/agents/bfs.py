@@ -25,3 +25,13 @@ class BFS(Agent):
 
         return failure
     """
+
+    def search(self, problem):
+        """
+        Searches the problem for a solution
+        """
+        # Initialize the frontier with the initial node
+        node = problem.start_state 
+        if problem.goal_test(node):
+            return node
+        frontier = [node]
