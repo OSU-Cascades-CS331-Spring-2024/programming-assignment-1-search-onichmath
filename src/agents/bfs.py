@@ -1,4 +1,5 @@
 from agents.agent import Agent
+from models.node import Node
 
 class BFS(Agent):
     """
@@ -36,9 +37,9 @@ class BFS(Agent):
         Searches the problem for a solution
         """
         # Initialize the frontier with the initial node
-        node = problem.start_state 
+        node = Node(problem.start_state, 0, [problem.start_state.name])
 
-        if problem.goal_test(node):
+        if problem.goal_test(node.state):
             return node
 
         frontier = [node]
@@ -51,14 +52,16 @@ class BFS(Agent):
             self.explored += 1
 
             for child in problem.expand(node):
-                s = child
+                # current_path = node.path() + [child]
 
-                if problem.goal_test(s):
+                if problem.goal_test(child.state):
                     self.maintained = len(frontier)
+                    self.cost = child.path_cost
+                    self.path = child.path
                     return child
 
-                if s not in reached:
-                    reached.add(s)
+                if child.state not in reached:
+                    reached.add(child.state)
                     frontier.append(child)
                     self.expanded += 1
         return None
