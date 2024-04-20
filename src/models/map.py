@@ -1,4 +1,5 @@
 import sys
+from city import City
 
 class Map:
     def __init__(self, cities):
@@ -21,7 +22,9 @@ class Map:
 
     @classmethod
     def from_file(cls, file_name):
-        pass
+        lines = cls.map_lines_from_filename(file_name)
+        cities = {City.from_string(line) for line in lines}
+        return cls(cities)
 
 if __name__ == "__main__":
-    Map.from_file("france")
+    map = Map.from_file("france")
