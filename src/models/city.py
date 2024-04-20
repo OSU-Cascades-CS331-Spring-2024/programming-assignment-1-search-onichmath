@@ -97,7 +97,7 @@ class City:
         longitude = cls.degrees_to_decimal(lon_degrees, lon_minutes, lon_seconds, lon_direction)
 
         connections_info = parts[1].split()
-        connections = {connections_info[i]: float(connections_info[i + 1]) for i in range(0, len(connections_info), 2)}
+        connections = {connections_info[i].replace("va-",""): float(connections_info[i + 1]) for i in range(0, len(connections_info), 2)}
     
         return cls(name, longitude, latitude, connections) 
 
