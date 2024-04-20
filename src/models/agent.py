@@ -16,13 +16,25 @@ class Agent:
         self.maintained = 0
 
     def bfs(self, start, goal):
+        """
+        Breadth-first search
+        """
         pass
     
     def iddls(self, start, goal):
+        """
+        Iterative deepening depth-limited search
+        """
         pass
 
     def ucs(self, start, goal):
+        """
+        Uniform cost search
+        """
         pass
 
     def astar(self, start, goal):
+        """
+        A* search
+        """
         pass
