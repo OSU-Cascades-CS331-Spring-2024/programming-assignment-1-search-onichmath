@@ -14,3 +14,15 @@ class Agent:
         self.explored = 0 
         self.expanded = 0 
         self.maintained = 0
+
+    def bfs(self, start, goal):
+        pass
+    
+    def iddls(self, start, goal):
+        pass
+
+    def ucs(self, start, goal):
+        pass
+
+    def astar(self, start, goal):
+        pass
