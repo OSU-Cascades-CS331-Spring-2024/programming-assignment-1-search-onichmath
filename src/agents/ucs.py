@@ -37,3 +37,14 @@ class UCSAgent(Agent):
 
         reached = {node.state: node}
 
+        while frontier:
+            node = heapq.heappop(frontier)[1]
+            print(node)
+
+            self.explored += 1
+            if problem.goal_test(node.state):
+                self.maintained = len(reached)
+                self.cost = node.path_cost
+                self.path = node.path
+                return node 
+
