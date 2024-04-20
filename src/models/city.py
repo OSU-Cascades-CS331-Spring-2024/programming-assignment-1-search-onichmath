@@ -2,7 +2,7 @@ import math
 import sys
 
 class City:
-    def __init__(self, name, longitude, latitude, connections):
+    def __init__(self, name, longitude, latitude, connections, parent=None, cost=0):
         """
         Initializes a city with a name, longitude, latitude, and connections
         """
@@ -10,6 +10,8 @@ class City:
         self.latitude = latitude
         self.longitude = longitude
         self.connections = connections
+        self.parent = parent
+        self.cost = cost
 
     def __str__(self):
         """
