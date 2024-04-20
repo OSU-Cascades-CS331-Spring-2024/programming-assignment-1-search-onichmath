@@ -11,7 +11,6 @@ def get_maps():
 def list_maps_and_cities():
     maps = get_maps()
     print()
-    print(f"Available maps and cities:")
     for map in maps:
         cities = []
         with open(f"../map_data/{map}", "r") as f:
