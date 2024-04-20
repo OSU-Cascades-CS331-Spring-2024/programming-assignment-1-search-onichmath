@@ -25,6 +25,11 @@ class BFS(Agent):
 
         return failure
     """
+    def __init__(self):
+        """
+        Initializes the agent
+        """
+        super().__init__()
 
     def search(self, problem):
         """
@@ -42,11 +47,18 @@ class BFS(Agent):
 
         while frontier:
             node = frontier.pop(0)
+
+            self.explored += 1
+
             for child in problem.expand(node):
                 s = child.state
+
                 if problem.goal_test(s):
+                    self.maintained = len(frontier)
                     return child
+
                 if s not in reached:
                     reached.add(s)
                     frontier.append(child)
+                    self.expanded += 1
         return None
