@@ -1,5 +1,21 @@
 from agent import Agent
 
+class PseudoQueue:
+    """
+    A FIFO queue
+    """
+    def __init__(self):
+        self.queue = []
+
+    def add(self, item):
+        self.queue.append(item)
+
+    def pop(self):
+        return self.queue.pop(0)
+
+    def is_empty(self):
+        return len(self.queue) == 0
+
 class BFS(Agent):
     """
     Breadth-First Search Agent
@@ -32,6 +48,12 @@ class BFS(Agent):
         """
         # Initialize the frontier with the initial node
         node = problem.start_state 
+
         if problem.goal_test(node):
             return node
+
         frontier = [node]
+        
+        while frontier:
+            node = frontier.pop(0)
+
