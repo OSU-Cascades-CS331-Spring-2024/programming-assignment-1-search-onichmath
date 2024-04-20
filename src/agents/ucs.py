@@ -1,4 +1,8 @@
-class UCSAgent:
+import heapq
+from agents.agent import Agent
+from models.node import Node
+
+class UCSAgent(Agent):
     """
     function UNIFORM-COST-SEARCH(problem) returns a solution node, or failure
         return BEST-FIRST-SEARCH(problem, PATH-COST)
@@ -18,4 +22,6 @@ class UCSAgent:
                     add child to frontier
         return failure
     """
-    pass
+    def __init__(self):
+        super().__init__()
+
