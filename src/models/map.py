@@ -20,6 +20,12 @@ class Map:
         """
         return f"Map(cities={self.cities})"
 
+    def get_city(self, city_name):
+        """
+        Returns the city with the given name
+        """
+        return self.cities[city_name]
+
     @staticmethod 
     def map_lines_from_filename(file_name):
         file_path = "../map_data/" + file_name + ".txt"

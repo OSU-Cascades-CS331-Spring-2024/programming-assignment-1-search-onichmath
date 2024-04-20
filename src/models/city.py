@@ -10,8 +10,6 @@ class City:
         self.latitude = latitude
         self.longitude = longitude
         self.connections = connections
-        self.parent = parent
-        self.cost = cost
 
     def __str__(self):
         """
