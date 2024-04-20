@@ -20,7 +20,9 @@ def list_maps_and_cities():
                 city = line.split(" ")[0]
                 cities.append(city)
         print(f"Map: {map.split('.')[0]}")
-        print(f"Cities: {' '.join(cities)}")
+        print("Cities:")
+        for i in range(0, len(cities), 5):
+            print(f"{' '.join(cities[i:i+5])}")
     print()
 
 
