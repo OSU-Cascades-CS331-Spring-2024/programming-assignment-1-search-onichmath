@@ -34,7 +34,8 @@ class BFSAgent(Agent):
 
     def search(self, problem):
         """
-        Searches the problem for a solution
+        Searches the problem for a solution using breadth-first search
+        Breadth-first search uses a FIFO queue to explore
         """
         # Initialize the frontier with the initial node
         node = Node(problem.start_state, 0, [problem.start_state.name])
