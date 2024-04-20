@@ -25,8 +25,17 @@ class Agent:
         self.expanded = 0 
         self.maintained = 0
 
+    def get_path_string(self):
+        path_string = ""
+        for i in range(len(self.path)):
+            if (i == len(self.path) - 1):
+                path_string += self.path[i]
+                break
+            path_string += self.path[i] + " -> "
+        return path_string
+
     def __str__(self):
         """
         Returns the agent's  metrics
         """
-        return f"Path: {self.path}\nCost: {self.cost}\nExplored: {self.explored}\nExpanded: {self.expanded}\nMaintained: {self.maintained}"
+        return f"{self.__class__.__name__}\nPath: {self.get_path_string()}\nCost: {self.cost}\nExplored: {self.explored}\nExpanded: {self.expanded}\nMaintained: {self.maintained}"
