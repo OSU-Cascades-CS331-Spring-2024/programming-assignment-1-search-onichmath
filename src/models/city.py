@@ -23,6 +23,12 @@ class City:
         """
         return f"City(name={self.name}, latitude={self.latitude}, longitude={self.longitude}, connections={self.connections})"
 
+    def get_name(self):
+        """
+        Returns the name of the city
+        """
+        return self.name
+
     def get_longitude(self):
         """
         Returns the longitude of the city
