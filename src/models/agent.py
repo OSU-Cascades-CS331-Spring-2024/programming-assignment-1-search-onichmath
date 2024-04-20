@@ -19,3 +19,16 @@ class Agent:
         self.explored = 0 
         self.expanded = 0 
         self.maintained = 0
+
+
+    def bfs_search(self):
+        pass
+
+    def iddls_search(self):
+        pass
+
+    def ucs_search(self):
+        pass
+
+    def astar_search(self):
+        pass
