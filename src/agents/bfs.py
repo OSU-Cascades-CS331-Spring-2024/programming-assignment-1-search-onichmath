@@ -1,7 +1,7 @@
 from agents.agent import Agent
 from models.node import Node
 
-class BFS(Agent):
+class BFSAgent(Agent):
     """
     Breadth-First Search Agent
     The following pseudocode is from Artificial Intelligence: A Modern Approach
@@ -44,7 +44,7 @@ class BFS(Agent):
 
         frontier = [node]
 
-        reached = set([node])
+        reached = set([node.state])
 
         while frontier:
             node = frontier.pop(0)
@@ -52,10 +52,10 @@ class BFS(Agent):
             self.explored += 1
 
             for child in problem.expand(node):
-                # current_path = node.path() + [child]
+                self.expanded += 1
 
                 if problem.goal_test(child.state):
-                    self.maintained = len(frontier)
+                    self.maintained = len(reached)
                     self.cost = child.path_cost
                     self.path = child.path
                     return child
@@ -63,5 +63,4 @@ class BFS(Agent):
                 if child.state not in reached:
                     reached.add(child.state)
                     frontier.append(child)
-                    self.expanded += 1
         return None

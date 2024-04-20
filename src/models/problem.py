@@ -36,7 +36,7 @@ class Problem():
 
     def expand(self, node):
         """
-
+        Expands the given node
         """
         s = node.state
         for action in self.actions(s):
