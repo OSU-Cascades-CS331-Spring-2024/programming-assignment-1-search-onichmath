@@ -8,8 +8,8 @@ class Agent:
         - Maintained: Average number of nodes stored in the frontier
         """
         # Path
-        self.current_path = [] 
-        self.current_cost = 0 
+        self.path = [] 
+        self.cost = 0 
         # Metrics
         self.explored = 0 
         self.expanded = 0 
@@ -19,8 +19,8 @@ class Agent:
         """
         Resets the agent's path, cost, and metrics
         """
-        self.current_path = [] 
-        self.current_cost = 0 
+        self.path = [] 
+        self.cost = 0 
         self.explored = 0 
         self.expanded = 0 
         self.maintained = 0
@@ -29,4 +29,4 @@ class Agent:
         """
         Returns the agent's  metrics
         """
-        return f"Path: {self.current_path}\nCost: {self.current_cost}\nExplored: {self.explored}\nExpanded: {self.expanded}\nMaintained: {self.maintained}"
+        return f"Path: {self.path}\nCost: {self.cost}\nExplored: {self.explored}\nExpanded: {self.expanded}\nMaintained: {self.maintained}"
