@@ -20,7 +20,7 @@ class Agent:
         Breadth-first search
         """
         pass
-    
+
     def iddls(self, start, goal):
         """
         Iterative deepening depth-limited search
