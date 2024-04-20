@@ -48,3 +48,11 @@ class UCSAgent(Agent):
                 self.path = node.path
                 return node 
 
+            for child in problem.expand(node):
+                self.expanded += 1
+                s = child.state
+
+                if s not in reached or child.path_cost < reached[s].path_cost:
+                    reached[s] = child
+                    heapq.heappush(frontier, [child.path_cost, child])
+        return None
