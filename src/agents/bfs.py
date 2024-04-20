@@ -4,7 +4,7 @@ from models.node import Node
 class BFSAgent(Agent):
     """
     Breadth-First Search Agent
-    The following pseudocode is from Artificial Intelligence: A Modern Approach
+    The following pseudocode is from Artificial Intelligence: A Modern Approach page 176
 
     function BREADTH-FIRST-SEARCH(problem) returns a solution node or failure
         node <- NODE(problem.INITIAL)
@@ -26,6 +26,7 @@ class BFSAgent(Agent):
 
         return failure
     """
+
     def __init__(self):
         """
         Initializes the agent

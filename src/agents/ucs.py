@@ -4,6 +4,9 @@ from models.node import Node
 
 class UCSAgent(Agent):
     """
+    Uniform Cost Search Agent
+    The following pseudocode is from Artificial Intelligence: A Modern Approach page 167
+
     function UNIFORM-COST-SEARCH(problem) returns a solution node, or failure
         return BEST-FIRST-SEARCH(problem, PATH-COST)
 
@@ -22,7 +25,11 @@ class UCSAgent(Agent):
                     add child to frontier
         return failure
     """
+
     def __init__(self):
+        """
+        Initializes the agent
+        """
         super().__init__()
 
     def search(self, problem):
