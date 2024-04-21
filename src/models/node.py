@@ -12,3 +12,15 @@ class Node:
         Returns the state of the node
         """
         return f"{self.state.name}, {self.path_cost}, {self.path}"
+
+    def is_cycle(self):
+        """
+        Returns whether the node is a cycle
+        """
+        return self.state.name in self.path
+
+    def depth(self):
+        """
+        Returns the depth of the node
+        """
+        return len(self.path)
