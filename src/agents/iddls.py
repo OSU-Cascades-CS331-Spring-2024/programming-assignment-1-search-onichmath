@@ -60,6 +60,13 @@ class IDDLSAgent(Agent):
                 self.path = node.path
                 return node 
 
+            if node.depth > limit:
+                result = "cutoff"
+
+            # TODO: else if not cycle
+        return result
+
+
     def search(self, problem):
         """
         Searches the problem for a solution using iterative deepening depth-limited search
