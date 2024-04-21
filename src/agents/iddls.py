@@ -47,9 +47,7 @@ class IDDLSAgent(Agent):
         Frontier is a LIFO queue (stack)
         """
         frontier = [Node(problem.start_state, 0, [problem.start_state.name])]
-        result = "failure" # TODO: how to represent failure/cutoff? String?
-
-        # TODO: maintained metric
+        result = "failure"
 
         while frontier:
             node = frontier.pop(-1)
