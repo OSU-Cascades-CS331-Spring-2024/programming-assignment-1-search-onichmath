@@ -23,4 +23,4 @@ class Node:
         """
         Returns the depth of the node
         """
-        return len(self.path)
+        return len(self.path) - 1
