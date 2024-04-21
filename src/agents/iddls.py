@@ -44,8 +44,21 @@ class IDDLSAgent(Agent):
     def depth_limited_search(self, problem, limit):
         """
         Searches the problem for a solution using depth-limited search
+        Frontier is a LIFO queue (stack)
         """
-        pass
+        frontier = [Node(problem.start_state, 0, [problem.start_state.name])]
+        result = "failure" # TODO: how to represent failure/cutoff? String?
+
+        # TODO: maintained metric
+
+        while frontier:
+            node = frontier.pop(-1)
+            self.explored += 1
+
+            if problem.goal_test(node.state):
+                self.cost = node.path_cost
+                self.path = node.path
+                return node 
 
     def search(self, problem):
         """
