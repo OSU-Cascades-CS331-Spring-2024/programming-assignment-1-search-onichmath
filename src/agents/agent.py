@@ -34,8 +34,21 @@ class Agent:
             path_string += self.path[i] + " -> "
         return path_string
 
+    def get_path_test_string(self, map):
+        """
+        Tests the path cost
+        """
+        cost = 0
+        for i in range(len(self.path) - 1):
+            cost += map.get_cost(self.path[i], self.path[i + 1])
+        try:
+            assert cost == self.cost
+            return f"Path cost: {self.cost} == {cost}"
+        except AssertionError:
+            return f"Path cost: {self.cost} != {cost}"
+
     def __str__(self):
         """
         Returns the agent's  metrics
         """
-        return f"{self.__class__.__name__}\nPath: {self.get_path_string()}\nCost: {self.cost}\nExplored: {self.explored}\nExpanded: {self.expanded}\nMaintained: {self.maintained}"
+        return f"{self.__class__.__name__}\nPath: {self.get_path_string()}\nCost: {self.cost}\nExplored: {self.explored}\nExpanded: {self.expanded}\nMaintained: {self.maintained}\n"

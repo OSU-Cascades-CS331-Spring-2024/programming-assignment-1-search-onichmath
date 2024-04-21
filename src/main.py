@@ -5,7 +5,6 @@ from agents.ucs import UCSAgent
 from agents.iddls import IDDLSAgent
 from models.problem import Problem
 from models.map import Map
-from models.city import City
 
 
 if __name__ == "__main__":
@@ -21,6 +20,7 @@ if __name__ == "__main__":
     ucs_solution = ucs_agent.search(problem)
     bfs_solution = bfs_agent.search(problem)
     iddls_solution = iddls_agent.search(problem)
+
 
     print(f"{problem}\n")
     print(f"{bfs_agent}\n")

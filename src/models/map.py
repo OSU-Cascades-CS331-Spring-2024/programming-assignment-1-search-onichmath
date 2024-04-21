@@ -26,6 +26,14 @@ class Map:
         """
         return self.cities[city_name]
 
+    def get_cost(self, city_name1, city_name2):
+        """
+        Returns the cost of traveling between two cities
+        """
+        city1 = self.get_city(city_name1)
+        city2 = self.get_city(city_name2)
+        return city1.get_cost(city2.get_name())
+
     @staticmethod 
     def map_lines_from_filename(file_name):
         file_path = "../map_data/" + file_name + ".txt"
