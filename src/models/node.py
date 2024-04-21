@@ -17,7 +17,7 @@ class Node:
         """
         Returns whether the node is a cycle
         """
-        return self.state.name in self.path
+        return self.state.name in self.path[:-1]
 
     def depth(self):
         """

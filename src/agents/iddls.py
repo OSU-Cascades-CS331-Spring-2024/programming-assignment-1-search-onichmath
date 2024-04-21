@@ -58,12 +58,17 @@ class IDDLSAgent(Agent):
             if problem.goal_test(node.state):
                 self.cost = node.path_cost
                 self.path = node.path
+                self.maintained = len(frontier)
                 return node 
 
-            if node.depth > limit:
+            if node.depth() > limit:
                 result = "cutoff"
 
-            # TODO: else if not cycle
+            elif not node.is_cycle():
+                for child in problem.expand(node):
+                    self.expanded += 1
+                    frontier.append(child)
+
         return result
 
 
@@ -76,5 +81,3 @@ class IDDLSAgent(Agent):
             result = self.depth_limited_search(problem, depth)
             if result != "cutoff":
                 return result
-
-
