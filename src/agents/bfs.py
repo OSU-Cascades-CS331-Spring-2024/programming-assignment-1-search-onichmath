@@ -45,19 +45,18 @@ class BFSAgent(Agent):
             return node
 
         frontier = [node]
+        self.maintained += 1
 
         reached = set([node.state])
 
         while frontier:
             node = frontier.pop(0)
-
             self.explored += 1
 
             for child in problem.expand(node):
                 self.expanded += 1
 
                 if problem.goal_test(child.state):
-                    self.maintained = len(reached)
                     self.cost = child.path_cost
                     self.path = child.path
                     return child
@@ -65,4 +64,5 @@ class BFSAgent(Agent):
                 if child.state not in reached:
                     reached.add(child.state)
                     frontier.append(child)
+                    self.maintained += 1
         return None

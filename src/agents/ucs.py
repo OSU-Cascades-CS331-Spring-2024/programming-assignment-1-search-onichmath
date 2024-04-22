@@ -42,16 +42,15 @@ class UCSAgent(Agent):
 
         frontier = [[node.path_cost, node]]
         heapq.heapify(frontier)
+        self.maintained += 1
 
         reached = {node.state: node}
 
         while frontier:
             node = heapq.heappop(frontier)[1]
-
             self.explored += 1
 
             if problem.goal_test(node.state):
-                self.maintained = len(reached)
                 self.cost = node.path_cost
                 self.path = node.path
                 return node 
@@ -63,4 +62,5 @@ class UCSAgent(Agent):
                 if s not in reached or child.path_cost < reached[s].path_cost:
                     reached[s] = child
                     heapq.heappush(frontier, [child.path_cost, child])
+                    self.maintained += 1
         return None

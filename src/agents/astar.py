@@ -48,16 +48,15 @@ class AStarAgent(Agent):
 
         frontier = [[node.path_cost, node]]
         heapq.heapify(frontier)
+        self.maintained += 1
 
         reached = {node.state: node}
 
         while frontier:
             node = heapq.heappop(frontier)[1]
-
             self.explored += 1
 
             if problem.goal_test(node.state):
-                self.maintained = len(reached)
                 self.cost = node.path_cost
                 self.path = node.path
                 return node 
@@ -70,4 +69,5 @@ class AStarAgent(Agent):
                     c = child.path_cost + h(s)
                     reached[s] = child
                     heapq.heappush(frontier, [c, child])
+                    self.maintained += 1
         return None
