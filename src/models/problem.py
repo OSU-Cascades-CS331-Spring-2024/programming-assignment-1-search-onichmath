@@ -5,16 +5,23 @@ from models.node import Node
 class Problem():
     polar_earth_radius_km = 6357.0 # https://en.wikipedia.org/wiki/Earth_radius
 
-    def __init__(self, start_city_name, goal_city_name, map):
+    def __init__(self, start_city, goal_city, map):
         """
         Initializes a problem with a start and goal state
         """
-        self.start_state = start_city_name
-        self.goal_state = goal_city_name
+        self.start_state = start_city
+        self.goal_state = goal_city
         self.map = map
 
     def __str__(self):
         return f"Problem: {self.start_state} -> {self.goal_state}"
+
+    def set_states(self, start_city, goal_city):
+        """
+        Sets the start and goal states
+        """
+        self.start_state = start_city
+        self.goal_state = goal_city
 
     def actions(self, state):
         """
