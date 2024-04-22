@@ -5,7 +5,7 @@ def usage():
 
 def get_maps():
     maps = os.listdir("../map_data")
-    # maps = [map.split(".")[0] for map in maps]
+    maps = [map.split(".")[0] for map in maps]
     return maps
 
 def list_maps_and_cities():
