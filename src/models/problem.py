@@ -1,5 +1,5 @@
 from models.city import City
-from math import cos, sin, atan2, sqrt, radians
+from math import cos, sin,  sqrt, radians, asin
 from models.node import Node
 
 class Problem():
@@ -56,15 +56,31 @@ class Problem():
         """
         x1, y1, z1 = self.polar_to_cartesian_km(state.longitude, state.latitude)
         x2, y2, z2 = self.polar_to_cartesian_km(self.goal_state.longitude, self.goal_state.latitude)
-        return ((x1 - x2) ** 2 + (y1 - y2) ** 2 + (z1 - z2) ** 2) ** 0.5
+        d = ((x1 - x2) ** 2 + (y1 - y2) ** 2 + (z1 - z2) ** 2) ** 0.5
 
+        return d
+
+    def heuristic_haversine(self, state):
+        """
+        Returns the heuristic value for the given state using haversine's formula
+        https://en.wikipedia.org/wiki/Haversine_formula
+        """
+        phi_1, phi_2 = state.latitude, self.goal_state.latitude
+        lambda_1, lambda_2 = state.longitude, self.goal_state.longitude
+        dphi = phi_2 - phi_1
+        dlambda = lambda_2 - lambda_1
+
+        h = (1 - cos(dphi) + cos(phi_1) * cos(phi_2) * (1 - cos(dlambda))) / 2
+        d = 2 * self.polar_earth_radius_km * asin(sqrt(h))
+
+        return d
 
     def polar_to_cartesian_km(self, longitude, latitude):
         """
         Converts spherical polar coordinates to cartesian coordinates, assuming the Earth is a sphere
         https://stackoverflow.com/questions/1185408/converting-from-longitude-latitude-to-cartesian-coordinates
         """
-        x = cos(radians(latitude)) * cos(radians(longitude)) * self.polar_earth_radius_km
-        y = cos(radians(latitude)) * sin(radians(longitude)) * self.polar_earth_radius_km
-        z = sin(radians(latitude)) * self.polar_earth_radius_km
+        x = cos(latitude) * cos(longitude) * self.polar_earth_radius_km
+        y = cos(latitude) * sin(longitude) * self.polar_earth_radius_km
+        z = sin(latitude) * self.polar_earth_radius_km
         return x, y, z

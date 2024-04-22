@@ -34,13 +34,13 @@ class AStarAgent(Agent):
         """
         super().__init__()
 
-    def search(self, problem, heuristic="haversine"):
+    def search(self, problem, heuristic="euclidean"):
         """
         Searches the problem for a solution using uniform cost search
         Uniform cost search uses best-first search w/ path cost as the priority
         """
         if heuristic == "euclidean":
-            h = problem.heuristic_xyz
+            h = problem.heuristic_euclidean
         else:
             h = problem.heuristic_haversine
         # Initialize the frontier with the initial node
