@@ -29,18 +29,6 @@ class City:
         """
         return self.name
 
-    def get_longitude(self):
-        """
-        Returns the longitude of the city
-        """
-        return self.longitude
-
-    def get_latitude(self):
-        """
-        Returns the latitude of the city
-        """
-        return self.latitude
-
     def get_cost(self, city):
         """
         Returns the cost of traveling to a city
@@ -53,30 +41,15 @@ class City:
         """
         return self.connections
 
-    def get_cartesian_coordinates(self):
-        """
-        Returns the cartesian coordinates of the city
-        """
-        return self.polar_to_cartesian(self.longitude, self.latitude)
-
     @staticmethod
-    def polar_to_cartesian(longitude, latitude):
-        """
-        Converts spherical polar coordinates to cartesian coordinates
-        """
-        x = math.cos(math.radians(latitude)) * math.cos(math.radians(longitude))
-        y = math.cos(math.radians(latitude)) * math.sin(math.radians(longitude))
-        z = math.sin(math.radians(latitude))
-        return x, y, z
-
-    @staticmethod
-    def degrees_to_decimal(degrees, minutes, seconds, direction):
+    def degrees_to_radians(degrees, minutes, seconds, direction):
         """
         Converts degrees, minutes, seconds to decimal degrees
         """
         if direction in ['S', 'W']:
             return -1 * (float(degrees) + float(minutes) / 60 + float(seconds) / 3600)
-        return float(degrees) + float(minutes) / 60 + float(seconds) / 3600
+        decimal = float(degrees) + float(minutes) / 60 + float(seconds) / 3600
+        return math.radians(decimal)
 
     @classmethod
     def from_string(cls, string):
@@ -91,8 +64,8 @@ class City:
         lat_degrees, lat_minutes, lat_seconds, lat_direction = city_info[1:5]
         lon_degrees, lon_minutes, lon_seconds, lon_direction = city_info[5:]
 
-        latitude = cls.degrees_to_decimal(lat_degrees, lat_minutes, lat_seconds, lat_direction)
-        longitude = cls.degrees_to_decimal(lon_degrees, lon_minutes, lon_seconds, lon_direction)
+        latitude = cls.degrees_to_radians(lat_degrees, lat_minutes, lat_seconds, lat_direction)
+        longitude = cls.degrees_to_radians(lon_degrees, lon_minutes, lon_seconds, lon_direction)
 
         connections_info = parts[1].split()
         connections = {connections_info[i].replace("va-",""): float(connections_info[i + 1]) for i in range(0, len(connections_info), 2)}
