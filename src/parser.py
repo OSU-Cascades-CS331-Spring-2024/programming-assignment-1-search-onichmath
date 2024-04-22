@@ -21,7 +21,7 @@ class ArgParser:
 
         self.args = self.parser.parse_args()
 
-    def get_cities(self):
+    def get_cities_names(self):
         if self.args.A and self.args.B:
             return [[self.args.A, self.args.B]]
         return [["brest", "nice"],
@@ -49,3 +49,7 @@ class ArgParser:
             return self.args.M
         return "france"
 
+    def get_heuristic(self):
+        if self.args.heuristic:
+            return self.args.heuristic
+        return "euclidean"
