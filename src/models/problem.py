@@ -3,7 +3,7 @@ from math import cos, sin,  sqrt, radians, asin
 from models.node import Node
 
 class Problem():
-    polar_earth_radius_km = 6357.0
+    polar_earth_radius_km = 6357.0 # https://en.wikipedia.org/wiki/Earth_radius
 
     def __init__(self, start_city_name, goal_city_name, map):
         """
