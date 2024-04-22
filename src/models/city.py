@@ -46,10 +46,10 @@ class City:
         """
         Converts degrees, minutes, seconds to decimal degrees
         """
+        decimal_degrees = float(degrees) + float(minutes) / 60 + float(seconds) / 3600
         if direction in ['S', 'W']:
-            return -1 * (float(degrees) + float(minutes) / 60 + float(seconds) / 3600)
-        decimal = float(degrees) + float(minutes) / 60 + float(seconds) / 3600
-        return math.radians(decimal)
+            decimal_degrees *= -1
+        return math.radians(decimal_degrees)
 
     @classmethod
     def from_string(cls, string):
