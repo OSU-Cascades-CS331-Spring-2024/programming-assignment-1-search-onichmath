@@ -34,3 +34,40 @@ class AStarAgent(Agent):
         """
         super().__init__()
 
+    def search(self, problem, heuristic="haversine"):
+        """
+        Searches the problem for a solution using uniform cost search
+        Uniform cost search uses best-first search w/ path cost as the priority
+        """
+        if heuristic == "euclidean":
+            h = problem.heuristic_xyz
+        else:
+            h = problem.heuristic_haversine
+        # Initialize the frontier with the initial node
+        node = Node(problem.start_state, 0, [problem.start_state.name])
+
+        frontier = [[node.path_cost, node]]
+        heapq.heapify(frontier)
+
+        reached = {node.state: node}
+
+        while frontier:
+            node = heapq.heappop(frontier)[1]
+
+            self.explored += 1
+
+            if problem.goal_test(node.state):
+                self.maintained = len(reached)
+                self.cost = node.path_cost
+                self.path = node.path
+                return node 
+
+            for child in problem.expand(node):
+                self.expanded += 1
+                s = child.state
+
+                if s not in reached or child.path_cost < reached[s].path_cost:
+                    c = child.path_cost + h(s)
+                    reached[s] = child
+                    heapq.heappush(frontier, [c, child])
+        return None

@@ -50,9 +50,9 @@ class Problem():
             c = node.path_cost + self.action_cost(s, s_prime)
             yield Node(s_prime, c, node.path + [s_prime.name])
 
-    def heuristic_xyz(self, state):
+    def heuristic_euclidean(self, state):
         """
-        Returns the heuristic value for the given state
+        Returns the heuristic value for the given state using euclidean distance
         """
         x1, y1, z1 = self.polar_to_cartesian_km(state.longitude, state.latitude)
         x2, y2, z2 = self.polar_to_cartesian_km(self.goal_state.longitude, self.goal_state.latitude)
