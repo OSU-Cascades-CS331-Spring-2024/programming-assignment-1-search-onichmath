@@ -34,3 +34,35 @@ class AStarAgent(Agent):
         """
         super().__init__()
 
+    def search(self, problem):
+        """
+        Searches the problem for a solution using A*
+        A* uses best first search with an additional heuristic function to determine the priority of the node
+        """
+        # Initialize the frontier with the initial node
+        node = Node(problem.start_state, 0, [problem.start_state.name])
+
+        frontier = [[node.path_cost, node]]
+        heapq.heapify(frontier)
+
+        reached = {node.state: node}
+
+        while frontier:
+            node = heapq.heappop(frontier)[1]
+
+            self.explored += 1
+
+            if problem.goal_test(node.state):
+                self.maintained = len(reached)
+                self.cost = node.path_cost
+                self.path = node.path
+                return node 
+
+            for child in problem.expand(node):
+                self.expanded += 1
+                s = child.state
+
+                if s not in reached or child.path_cost < reached[s].path_cost:
+                    reached[s] = child
+                    heapq.heappush(frontier, [child.path_cost, child])
+        return None
