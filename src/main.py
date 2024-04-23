@@ -37,7 +37,7 @@ def run_all_algorithms(parser):
 
 def run_algorithm(parser):
     try:
-        algorithm = parser.get_algorithm()
+        algorithm = parser.get_algorithms()[0]
         map = Map.from_file(parser.get_map())
         cities = parser.get_cities_names()
         start_city = map.cities[cities[0][0]]

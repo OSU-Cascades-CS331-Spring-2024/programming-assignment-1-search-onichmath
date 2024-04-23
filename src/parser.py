@@ -34,7 +34,7 @@ class ArgParser:
                 ["nice", "nantes"],
                 ["caen", "strasbourg"]]
 
-    def get_algorithm(self):
+    def get_algorithms(self):
         if self.args.S:
             return [self.args.S]
         return [

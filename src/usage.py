@@ -1,7 +1,7 @@
 import os
 
 def usage():
-    print("Usage:\npython main.py -M <map_name> -A <start_city> -B <end_city> -S <search_algorithm>")
+    print("Usage:\npython main.py -M <map_name> -A <start_city> -B <end_city> -S <search_algorithm> -H <heuristic>")
 
 def get_maps():
     maps = os.listdir("../map_data")
@@ -28,7 +28,8 @@ def list_maps_and_cities():
 def help():
     usage()
     list_maps_and_cities()
-    print("Search algorithms:\nbfs, iddls, ucs, astar")
+    print("Search algorithms:\nbfs, iddls, ucs, astar\n")
+    print("Heuristics:\neuclidean, haversine")
 
 if __name__ == "__main__":
     help()
