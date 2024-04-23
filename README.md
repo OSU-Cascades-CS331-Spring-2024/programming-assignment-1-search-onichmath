@@ -1,5 +1,7 @@
 # Introduction
 This project is part of the Artificial Intelligence class at Oregon State University Cascades. The goal of the project was to implement different search agents and compare their performance on a map of France.
+
+# Results
 | Agent                | Optimal solutions | Explored | Expanded | Maintained | Cost    |
 |----------------------|-------------------|----------|----------|------------|---------|
 | BFSAgent             | 2                 | 10.33    | 33.0     | 13.22      | 1135.89 |
@@ -7,6 +9,7 @@ This project is part of the Artificial Intelligence class at Oregon State Univer
 | IDDLSAgent           | 3                 | 146.89   | 148.78   | 153.11     | 1118.78 |
 | AStarEuclideanAgent  | 8                 | 9.22     | 29.22    | 15.33      | 1054.78 |
 | AStarHaversineAgent  | 8                 | 9.22     | 29.22    | 15.33      | 1054.78 |
+
 # Agents
  * `BFSAgent`: The Breadth First Search Agent explores the map in a breadth first manner. The agent explored the environment efficiently, expanding a small number of nodes and maintaining the smallest number of nodes in the frontier. However, the agent does not consider cost and thus found the least amount of optimal solutions.
  * `UCSAgent`: The Uniform Cost Search Agent explores the map by expanding the node with the lowest path cost f(n) = g(n). The UCSAgent found the most optimal solutions, showcasing how considering cost leads to optimal results. The agent outperformed A* in the number of optimal solutions by a margin, but explored more of the environment to find these solutions.
