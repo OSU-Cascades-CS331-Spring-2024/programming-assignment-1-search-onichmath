@@ -15,4 +15,5 @@ This project is part of the Artificial Intelligence class at Oregon State Univer
  * `AStarHaversineAgent`: The A* Haversine Agent utilized the Haversine formula to calculate the heuristic cost. The Haversine Agent had equivalent results to the A* Euclidean Agent.
 # Discussion
 Out of the five different agents, the UCSAgent found the most optimal solutions. The A* agent performed similarly while exploring, expanding, and maintaining fewer nodes. This may lead to better performance in larger environments, and A* should be considered over UCS in most cases due to this improvement.
+
 The similar peformance of the A* Euclidean and A* Haversine agents implies that the distances calculated by each agent were not significantly different.
