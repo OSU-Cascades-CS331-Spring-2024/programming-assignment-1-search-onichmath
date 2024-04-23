@@ -50,7 +50,7 @@ class AStarEuclideanAgent(Agent):
         # Initialize the frontier with the initial node
         node = Node(problem.start_state, 0, [problem.start_state.name])
 
-        frontier = [[node.path_cost, node]]
+        frontier = [(node.path_cost, node)]
         heapq.heapify(frontier)
         self.maintain()
 
@@ -72,7 +72,7 @@ class AStarEuclideanAgent(Agent):
                 if s not in reached or child.path_cost < reached[s].path_cost:
                     c = child.path_cost + problem.heuristic_euclidean(s)
                     reached[s] = child
-                    heapq.heappush(frontier, [c, child])
+                    heapq.heappush(frontier, (c, child))
                     self.maintain()
         return None
 
@@ -123,7 +123,7 @@ class AStarHaversineAgent(Agent):
         # Initialize the frontier with the initial node
         node = Node(problem.start_state, 0, [problem.start_state.name])
 
-        frontier = [[node.path_cost, node]]
+        frontier = [(node.path_cost, node)]
         heapq.heapify(frontier)
         self.maintain()
 
@@ -145,6 +145,6 @@ class AStarHaversineAgent(Agent):
                 if s not in reached or child.path_cost < reached[s].path_cost:
                     c = child.path_cost + problem.heuristic_haversine(s)
                     reached[s] = child
-                    heapq.heappush(frontier, [c, child])
+                    heapq.heappush(frontier, (c, child))
                     self.maintain()
         return None
