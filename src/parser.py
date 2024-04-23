@@ -36,7 +36,7 @@ class ArgParser:
 
     def get_algorithm(self):
         if self.args.S:
-            return self.args.S 
+            return [self.args.S]
         return [
             "bfs",
             "ucs",
@@ -51,5 +51,8 @@ class ArgParser:
 
     def get_heuristic(self):
         if self.args.heuristic:
-            return self.args.heuristic
-        return "euclidean"
+            return [self.args.heuristic]
+        return ["euclidean", "haversine"]
+    
+    def no_cities(self):
+        return not self.args.A or not self.args.B
