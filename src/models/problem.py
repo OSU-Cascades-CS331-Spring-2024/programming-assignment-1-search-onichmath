@@ -35,7 +35,7 @@ class Problem():
         """
         return state == self.goal_state
 
-    def result(self, state, action:City):
+    def result(self, state:City, action:City):
         """
         Returns the state that results from the given action
         """
