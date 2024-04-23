@@ -5,6 +5,7 @@ class Agent:
     expanded = 0
     maintained = 0
     optimal_solutions = 0
+    num_runs = 0
 
     def __init__(self):
         """
@@ -93,3 +94,10 @@ class Agent:
         Returns the agent's  metrics
         """
         return f"{self.__class__.__name__}\nPath: {self.get_path_string()}\nCost: {self.cost}\nExplored: {self.explored}\nExpanded: {self.expanded}\nMaintained: {self.maintained}\n"
+
+    @classmethod
+    def get_class_metrics(cls):
+        """
+        Returns the class metrics
+        """
+        return f"Optimal solutions: {cls.optimal_solutions}\nExplored: {cls.explored / cls.num_runs}\nExpanded: {cls.expanded / cls.num_runs}\nMaintained: {cls.maintained / cls.num_runs}\nCost: {cls.cost / cls.num_runs}\n"
