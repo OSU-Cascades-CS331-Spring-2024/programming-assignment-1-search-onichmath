@@ -49,7 +49,7 @@ class IDDLSAgent(Agent):
         """
         frontier = [Node(problem.start_state, 0, [problem.start_state.name])]
         result = "failure"
-        self.maintain()
+        # self.maintain()
 
         while frontier:
             node = frontier.pop(-1)
@@ -58,6 +58,7 @@ class IDDLSAgent(Agent):
             if problem.goal_test(node.state):
                 self.add_cost(node.path_cost)
                 self.path = node.path
+                self.maintain(len(frontier))
                 return node 
 
             if node.depth() > limit:
@@ -67,7 +68,7 @@ class IDDLSAgent(Agent):
                 for child in problem.expand(node):
                     self.expand()
                     frontier.append(child)
-                    self.maintain()
+                    # self.maintain()
 
         return result
 

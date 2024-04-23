@@ -25,12 +25,12 @@ class Agent:
         self.expanded = 0 
         self.maintained = 0
 
-    def maintain(self):
+    def maintain(self, num_nodes:int):
         """
         Maintains the frontier
         """
-        self.maintained += 1
-        self.total_maintained += 1
+        self.maintained = num_nodes
+        self.total_maintained += num_nodes
 
     def explore(self):
         """
