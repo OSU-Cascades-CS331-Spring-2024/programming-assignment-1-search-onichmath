@@ -1,0 +1,324 @@
+Problem: brest -> nice
+BFSAgent
+Path: brest -> rennes -> paris -> dijon -> lyon -> avignon -> marseille -> nice
+Cost: 1633.0
+Explored: 17
+Expanded: 54
+Maintained: 17
+
+UCSAgent
+Path: brest -> rennes -> nantes -> bordeaux -> toulouse -> montpellier -> avignon -> marseille -> nice
+Cost: 1589.0
+Explored: 21
+Expanded: 64
+Maintained: 21
+
+IDDLSAgent
+Path: brest -> rennes -> nantes -> limoges -> lyon -> avignon -> marseille -> nice
+Cost: 1616.0
+Explored: 729
+Expanded: 727
+Maintained: 734
+
+AStarEuclideanAgent
+Path: brest -> rennes -> nantes -> bordeaux -> toulouse -> montpellier -> avignon -> marseille -> nice
+Cost: 1589.0
+Explored: 18
+Expanded: 56
+Maintained: 21
+
+AStarHaversineAgent
+Path: brest -> rennes -> nantes -> bordeaux -> toulouse -> montpellier -> avignon -> marseille -> nice
+Cost: 1589.0
+Explored: 18
+Expanded: 56
+Maintained: 21
+
+Problem: montpellier -> calais
+BFSAgent
+Path: montpellier -> toulouse -> limoges -> paris -> calais
+Cost: 1224.0
+Explored: 12
+Expanded: 34
+Maintained: 15
+
+UCSAgent
+Path: montpellier -> avignon -> lyon -> dijon -> paris -> calais
+Cost: 1131.0
+Explored: 17
+Expanded: 52
+Maintained: 20
+
+IDDLSAgent
+Path: montpellier -> toulouse -> limoges -> paris -> calais
+Cost: 1224.0
+Explored: 49
+Expanded: 52
+Maintained: 56
+
+AStarEuclideanAgent
+Path: montpellier -> avignon -> lyon -> dijon -> paris -> calais
+Cost: 1131.0
+Explored: 8
+Expanded: 27
+Maintained: 17
+
+AStarHaversineAgent
+Path: montpellier -> avignon -> lyon -> dijon -> paris -> calais
+Cost: 1131.0
+Explored: 8
+Expanded: 27
+Maintained: 17
+
+Problem: strasbourg -> bordeaux
+BFSAgent
+Path: strasbourg -> dijon -> lyon -> limoges -> bordeaux
+Cost: 1160.0
+Explored: 9
+Expanded: 32
+Maintained: 14
+
+UCSAgent
+Path: strasbourg -> nancy -> paris -> limoges -> bordeaux
+Cost: 1123.0
+Explored: 18
+Expanded: 53
+Maintained: 18
+
+IDDLSAgent
+Path: strasbourg -> nancy -> paris -> limoges -> bordeaux
+Cost: 1123.0
+Explored: 81
+Expanded: 85
+Maintained: 89
+
+AStarEuclideanAgent
+Path: strasbourg -> nancy -> paris -> limoges -> bordeaux
+Cost: 1123.0
+Explored: 12
+Expanded: 36
+Maintained: 19
+
+AStarHaversineAgent
+Path: strasbourg -> nancy -> paris -> limoges -> bordeaux
+Cost: 1123.0
+Explored: 12
+Expanded: 36
+Maintained: 19
+
+Problem: paris -> grenoble
+BFSAgent
+Path: paris -> dijon -> lyon -> grenoble
+Cost: 625.0
+Explored: 9
+Expanded: 32
+Maintained: 13
+
+UCSAgent
+Path: paris -> dijon -> lyon -> grenoble
+Cost: 625.0
+Explored: 13
+Expanded: 42
+Maintained: 16
+
+IDDLSAgent
+Path: paris -> limoges -> lyon -> grenoble
+Cost: 917.0
+Explored: 80
+Expanded: 80
+Maintained: 83
+
+AStarEuclideanAgent
+Path: paris -> dijon -> lyon -> grenoble
+Cost: 625.0
+Explored: 6
+Expanded: 22
+Maintained: 14
+
+AStarHaversineAgent
+Path: paris -> dijon -> lyon -> grenoble
+Cost: 625.0
+Explored: 6
+Expanded: 22
+Maintained: 14
+
+Problem: grenoble -> paris
+BFSAgent
+Path: grenoble -> lyon -> limoges -> paris
+Cost: 918.0
+Explored: 6
+Expanded: 19
+Maintained: 11
+
+UCSAgent
+Path: grenoble -> lyon -> dijon -> paris
+Cost: 621.0
+Explored: 11
+Expanded: 31
+Maintained: 15
+
+IDDLSAgent
+Path: grenoble -> lyon -> dijon -> paris
+Cost: 621.0
+Explored: 19
+Expanded: 22
+Maintained: 25
+
+AStarEuclideanAgent
+Path: grenoble -> lyon -> dijon -> paris
+Cost: 621.0
+Explored: 4
+Expanded: 10
+Maintained: 8
+
+AStarHaversineAgent
+Path: grenoble -> lyon -> dijon -> paris
+Cost: 621.0
+Explored: 4
+Expanded: 10
+Maintained: 8
+
+Problem: brest -> grenoble
+BFSAgent
+Path: brest -> rennes -> paris -> dijon -> lyon -> grenoble
+Cost: 1214.0
+Explored: 12
+Expanded: 39
+Maintained: 13
+
+UCSAgent
+Path: brest -> rennes -> nantes -> limoges -> lyon -> grenoble
+Cost: 1197.0
+Explored: 16
+Expanded: 50
+Maintained: 19
+
+IDDLSAgent
+Path: brest -> rennes -> nantes -> limoges -> lyon -> grenoble
+Cost: 1197.0
+Explored: 118
+Expanded: 116
+Maintained: 121
+
+AStarEuclideanAgent
+Path: brest -> rennes -> nantes -> limoges -> lyon -> grenoble
+Cost: 1197.0
+Explored: 11
+Expanded: 36
+Maintained: 17
+
+AStarHaversineAgent
+Path: brest -> rennes -> nantes -> limoges -> lyon -> grenoble
+Cost: 1197.0
+Explored: 11
+Expanded: 36
+Maintained: 17
+
+Problem: grenoble -> brest
+BFSAgent
+Path: grenoble -> lyon -> limoges -> nantes -> rennes -> brest
+Cost: 1198.0
+Explored: 15
+Expanded: 48
+Maintained: 17
+
+UCSAgent
+Path: grenoble -> lyon -> limoges -> nantes -> rennes -> brest
+Cost: 1198.0
+Explored: 20
+Expanded: 62
+Maintained: 20
+
+IDDLSAgent
+Path: grenoble -> lyon -> dijon -> paris -> rennes -> brest
+Cost: 1212.0
+Explored: 149
+Expanded: 156
+Maintained: 161
+
+AStarEuclideanAgent
+Path: grenoble -> lyon -> limoges -> nantes -> rennes -> brest
+Cost: 1198.0
+Explored: 9
+Expanded: 32
+Maintained: 17
+
+AStarHaversineAgent
+Path: grenoble -> lyon -> limoges -> nantes -> rennes -> brest
+Cost: 1198.0
+Explored: 9
+Expanded: 32
+Maintained: 17
+
+Problem: nice -> nantes
+BFSAgent
+Path: nice -> marseille -> avignon -> lyon -> limoges -> nantes
+Cost: 1262.0
+Explored: 8
+Expanded: 22
+Maintained: 10
+
+UCSAgent
+Path: nice -> marseille -> avignon -> montpellier -> toulouse -> bordeaux -> nantes
+Cost: 1232.0
+Explored: 15
+Expanded: 47
+Maintained: 19
+
+IDDLSAgent
+Path: nice -> marseille -> avignon -> lyon -> limoges -> nantes
+Cost: 1262.0
+Explored: 42
+Expanded: 46
+Maintained: 51
+
+AStarEuclideanAgent
+Path: nice -> marseille -> avignon -> montpellier -> toulouse -> limoges -> nantes
+Cost: 1250.0
+Explored: 10
+Expanded: 27
+Maintained: 15
+
+AStarHaversineAgent
+Path: nice -> marseille -> avignon -> montpellier -> toulouse -> limoges -> nantes
+Cost: 1250.0
+Explored: 10
+Expanded: 27
+Maintained: 15
+
+Problem: caen -> strasbourg
+BFSAgent
+Path: caen -> calais -> nancy -> strasbourg
+Cost: 989.0
+Explored: 5
+Expanded: 17
+Maintained: 9
+
+UCSAgent
+Path: caen -> paris -> nancy -> strasbourg
+Cost: 759.0
+Explored: 12
+Expanded: 41
+Maintained: 16
+
+IDDLSAgent
+Path: caen -> paris -> dijon -> strasbourg
+Cost: 897.0
+Explored: 55
+Expanded: 55
+Maintained: 58
+
+AStarEuclideanAgent
+Path: caen -> paris -> nancy -> strasbourg
+Cost: 759.0
+Explored: 5
+Expanded: 17
+Maintained: 10
+
+AStarHaversineAgent
+Path: caen -> paris -> nancy -> strasbourg
+Cost: 759.0
+Explored: 5
+Expanded: 17
+Maintained: 10
+
