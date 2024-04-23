@@ -1,4 +1,11 @@
 class Agent:
+
+    cost = 0
+    explored = 0
+    expanded = 0
+    maintained = 0
+    optimal_solutions = 0
+
     def __init__(self):
         """
         Initializes an agent with a path, cost, and metrics
@@ -14,6 +21,40 @@ class Agent:
         self.explored = 0 
         self.expanded = 0 
         self.maintained = 0
+
+    def maintain(self):
+        """
+        Maintains the frontier
+        """
+        self.maintained += 1
+        Agent.maintained += 1
+
+    def explore(self):
+        """
+        Explores the frontier
+        """
+        self.explored += 1
+        Agent.explored += 1
+
+    def expand(self):
+        """
+        Expands the frontier
+        """
+        self.expanded += 1
+        Agent.expanded += 1
+
+    def add_optimal_solution(self):
+        """
+        Adds an optimal solution
+        """
+        Agent.optimal_solutions += 1
+
+    def add_cost(self, cost):
+        """
+        Adds the cost to the agent
+        """
+        self.cost = cost
+        Agent.cost += cost
 
     def reset_agent(self):
         """
