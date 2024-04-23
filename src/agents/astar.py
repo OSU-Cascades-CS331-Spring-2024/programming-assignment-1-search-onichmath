@@ -33,6 +33,13 @@ class AStarAgent(Agent):
         Initializes the agent
         """
         super().__init__()
+        self.heuristic = "euclidean"
+
+    def __str__(self):
+        """
+        Returns the string representation of the agent
+        """
+        return f"{super().__str__()}Heuristic: {self.heuristic}"
 
     def search(self, problem, heuristic="euclidean"):
         """
@@ -40,8 +47,10 @@ class AStarAgent(Agent):
         Uniform cost search uses best-first search w/ path cost as the priority
         """
         if heuristic == "euclidean":
+            self.heuristic = "euclidean"
             h = problem.heuristic_euclidean
         else:
+            self.heuristic = "haversine"
             h = problem.heuristic_haversine
         # Initialize the frontier with the initial node
         node = Node(problem.start_state, 0, [problem.start_state.name])
