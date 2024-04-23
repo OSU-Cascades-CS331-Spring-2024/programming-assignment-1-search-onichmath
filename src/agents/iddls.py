@@ -1,5 +1,6 @@
 from agents.agent import Agent
 from models.node import Node
+from models.problem import Problem
 
 class IDDLSAgent(Agent):
     """
@@ -41,21 +42,21 @@ class IDDLSAgent(Agent):
             yield i
             i += 1
 
-    def depth_limited_search(self, problem, limit):
+    def depth_limited_search(self, problem:Problem, limit):
         """
         Searches the problem for a solution using depth-limited search
         Frontier is a LIFO queue (stack)
         """
         frontier = [Node(problem.start_state, 0, [problem.start_state.name])]
         result = "failure"
-        self.maintained += 1
+        self.maintain()
 
         while frontier:
             node = frontier.pop(-1)
-            self.explored += 1
+            self.explore()
 
             if problem.goal_test(node.state):
-                self.cost = node.path_cost
+                self.add_cost(node.path_cost)
                 self.path = node.path
                 return node 
 
@@ -64,18 +65,19 @@ class IDDLSAgent(Agent):
 
             elif not node.is_cycle():
                 for child in problem.expand(node):
-                    self.expanded += 1
+                    self.expand()
                     frontier.append(child)
-                    self.maintained += 1
+                    self.maintain()
 
         return result
 
 
-    def search(self, problem):
+    def search(self, problem:Problem):
         """
         Searches the problem for a solution using iterative deepening depth-limited search
         Iterative deepening depth-limited search uses depth-limited search with increasing depths
         """
+        self.num_runs += 1
         for depth in self.generate_infinite_numbers():
             result = self.depth_limited_search(problem, depth)
             if result != "cutoff":

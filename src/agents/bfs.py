@@ -1,5 +1,6 @@
 from agents.agent import Agent
 from models.node import Node
+from models.problem import Problem
 
 class BFSAgent(Agent):
     """
@@ -33,11 +34,12 @@ class BFSAgent(Agent):
         """
         super().__init__()
 
-    def search(self, problem):
+    def search(self, problem:Problem):
         """
         Searches the problem for a solution using breadth-first search
         Breadth-first search uses a FIFO queue to explore
         """
+        self.num_runs += 1
         # Initialize the frontier with the initial node
         node = Node(problem.start_state, 0, [problem.start_state.name])
 
@@ -45,24 +47,24 @@ class BFSAgent(Agent):
             return node
 
         frontier = [node]
-        self.maintained += 1
+        self.maintain()
 
         reached = set([node.state])
 
         while frontier:
             node = frontier.pop(0)
-            self.explored += 1
+            self.explore()
 
             for child in problem.expand(node):
-                self.expanded += 1
+                self.expand()
 
                 if problem.goal_test(child.state):
-                    self.cost = child.path_cost
+                    self.add_cost(child.path_cost)
                     self.path = child.path
                     return child
 
                 if child.state not in reached:
                     reached.add(child.state)
                     frontier.append(child)
-                    self.maintained += 1
+                    self.maintain()
         return None

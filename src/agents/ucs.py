@@ -1,6 +1,7 @@
 import heapq
 from agents.agent import Agent
 from models.node import Node
+from models.problem import Problem
 
 class UCSAgent(Agent):
     """
@@ -32,35 +33,36 @@ class UCSAgent(Agent):
         """
         super().__init__()
 
-    def search(self, problem):
+    def search(self, problem:Problem):
         """
         Searches the problem for a solution using uniform cost search
         Uniform cost search uses best-first search w/ path cost as the priority
         """
+        self.num_runs += 1
         # Initialize the frontier with the initial node
         node = Node(problem.start_state, 0, [problem.start_state.name])
 
         frontier = [[node.path_cost, node]]
         heapq.heapify(frontier)
-        self.maintained += 1
+        self.maintain()
 
         reached = {node.state: node}
 
         while frontier:
             node = heapq.heappop(frontier)[1]
-            self.explored += 1
+            self.explore()
 
             if problem.goal_test(node.state):
-                self.cost = node.path_cost
+                self.add_cost(node.path_cost)
                 self.path = node.path
                 return node 
 
             for child in problem.expand(node):
-                self.expanded += 1
+                self.expand()
                 s = child.state
 
                 if s not in reached or child.path_cost < reached[s].path_cost:
                     reached[s] = child
                     heapq.heappush(frontier, [child.path_cost, child])
-                    self.maintained += 1
+                    self.maintain()
         return None
