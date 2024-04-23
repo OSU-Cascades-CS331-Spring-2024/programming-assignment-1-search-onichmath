@@ -77,7 +77,7 @@ class IDDLSAgent(Agent):
         Searches the problem for a solution using iterative deepening depth-limited search
         Iterative deepening depth-limited search uses depth-limited search with increasing depths
         """
-        self.num_runs += 1
+        self.add_run()
         for depth in self.generate_infinite_numbers():
             result = self.depth_limited_search(problem, depth)
             if result != "cutoff":

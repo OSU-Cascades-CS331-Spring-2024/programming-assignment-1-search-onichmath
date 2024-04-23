@@ -39,7 +39,7 @@ class BFSAgent(Agent):
         Searches the problem for a solution using breadth-first search
         Breadth-first search uses a FIFO queue to explore
         """
-        self.num_runs += 1
+        self.add_run()
         # Initialize the frontier with the initial node
         node = Node(problem.start_state, 0, [problem.start_state.name])
 

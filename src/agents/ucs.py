@@ -38,7 +38,7 @@ class UCSAgent(Agent):
         Searches the problem for a solution using uniform cost search
         Uniform cost search uses best-first search w/ path cost as the priority
         """
-        self.num_runs += 1
+        self.add_run()
         # Initialize the frontier with the initial node
         node = Node(problem.start_state, 0, [problem.start_state.name])
 

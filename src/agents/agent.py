@@ -1,10 +1,10 @@
 class Agent:
 
-    cost = 0
-    explored = 0
-    expanded = 0
-    maintained = 0
-    optimal_solutions = 0
+    total_cost = 0
+    total_explored = 0
+    total_expanded = 0
+    total_maintained = 0
+    total_optimal_solutions = 0
     num_runs = 0
 
     def __init__(self):
@@ -28,34 +28,34 @@ class Agent:
         Maintains the frontier
         """
         self.maintained += 1
-        Agent.maintained += 1
+        self.total_maintained += 1
 
     def explore(self):
         """
         Explores the frontier
         """
         self.explored += 1
-        Agent.explored += 1
+        self.total_explored += 1
 
     def expand(self):
         """
         Expands the frontier
         """
         self.expanded += 1
-        Agent.expanded += 1
+        self.total_expanded += 1
 
     def add_optimal_solution(self):
         """
         Adds an optimal solution
         """
-        Agent.optimal_solutions += 1
+        self.total_optimal_solutions += 1
 
     def add_cost(self, cost):
         """
         Adds the cost to the agent
         """
         self.cost = cost
-        Agent.cost += cost
+        self.total_cost += cost
 
     def reset_agent(self):
         """
@@ -68,6 +68,9 @@ class Agent:
         self.maintained = 0
 
     def get_path_string(self):
+        """
+        Returns the path as a string
+        """
         path_string = ""
         for i in range(len(self.path)):
             if (i == len(self.path) - 1):
@@ -95,9 +98,19 @@ class Agent:
         """
         return f"{self.__class__.__name__}\nPath: {self.get_path_string()}\nCost: {self.cost}\nExplored: {self.explored}\nExpanded: {self.expanded}\nMaintained: {self.maintained}\n"
 
-    @classmethod
-    def get_class_metrics(cls):
+    def get_class_metrics(self):
         """
         Returns the class metrics
         """
-        return f"Optimal solutions: {cls.optimal_solutions}\nExplored: {cls.explored / cls.num_runs}\nExpanded: {cls.expanded / cls.num_runs}\nMaintained: {cls.maintained / cls.num_runs}\nCost: {cls.cost / cls.num_runs}\n"
+        optimal_solutions = self.total_optimal_solutions
+        explored = round(self.total_explored / self.num_runs, 2)
+        expanded = round(self.total_expanded / self.num_runs, 2)
+        maintained = round(self.total_maintained / self.num_runs, 2)
+        cost = round(self.total_cost / self.num_runs, 2)
+        return f"{self.__class__.__name__}\nOptimal solutions: {optimal_solutions}\nExplored: {explored}\nExpanded: {expanded}\nMaintained: {maintained}\nCost: {cost}\n"
+
+    def add_run(self):
+        """
+        Adds a run
+        """
+        self.num_runs += 1
