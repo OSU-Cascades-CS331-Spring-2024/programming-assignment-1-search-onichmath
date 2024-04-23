@@ -1,6 +1,15 @@
 # Introduction
 This project is part of the Artificial Intelligence class at Oregon State University Cascades. The goal of the project was to implement different search agents and compare their performance on a map of France.
 
+Each agent had the following metrics computed (definitions from Project 1 Assignment):
+* The average number of nodes explored (i.e., the number of nodes removed
+from the frontier)
+* The average number of nodes expanded (i.e., the total number of successors)
+* The average number of nodes maintained (i.e., stored in the frontier)
+* The number of times it found the optimal solution (optimal here is measured as “found
+the best solution out of the four search algorithms)
+
+
 # Results
 | Agent                | Optimal solutions | Explored | Expanded | Maintained | Cost    |
 |----------------------|-------------------|----------|----------|------------|---------|
