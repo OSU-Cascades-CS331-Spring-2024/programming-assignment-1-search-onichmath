@@ -1,3 +1,5 @@
+from models.map import Map
+
 class Agent:
 
     total_cost = 0
@@ -79,7 +81,7 @@ class Agent:
             path_string += self.path[i] + " -> "
         return path_string
 
-    def get_path_test_string(self, map):
+    def get_path_test_string(self, map:Map):
         """
         Tests the path cost
         """
