@@ -1,5 +1,4 @@
 import usage
-import sys
 from parser import ArgParser
 from agents.bfs import BFSAgent
 from agents.ucs import UCSAgent
@@ -30,9 +29,8 @@ def run_all_algorithms(parser):
             min_indices = [i for i, x in enumerate(costs) if x == min_cost]
             for i in min_indices:
                 agents[i].add_optimal_solution()
-    with open("../README.md", "w") as f:
-        for agent in agents:
-            f.write(f"{agent.get_class_metrics()}\n")
+    for agent in agents:
+        print(f"{agent.get_class_metrics()}\n")
 
 
 def run_algorithm(parser):
