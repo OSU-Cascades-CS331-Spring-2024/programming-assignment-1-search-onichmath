@@ -17,7 +17,7 @@ This project is part of the Artificial Intelligence class at Oregon State Univer
 # Usage
 * add needed map data to `/map_data/` in the specified format
 * `cd /src/`
-* Specific Goals:
+* Specific goals:
     * `python3 main.py -M <map_name> -S <search_algorithm> -A <start_city> -B <goal_city> -H <heuristic>`
 * Run all agents on specified starts/goals:
     * `python3 main.py`
