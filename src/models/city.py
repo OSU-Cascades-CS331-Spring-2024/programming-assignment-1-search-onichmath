@@ -29,7 +29,7 @@ class City:
         """
         return self.name
 
-    def get_cost(self, city):
+    def get_cost(self, city:str):
         """
         Returns the cost of traveling to a city
         """

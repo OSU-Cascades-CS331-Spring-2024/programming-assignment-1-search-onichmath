@@ -1,5 +1,6 @@
+from models.city import City
 class Node:
-    def __init__(self, state, path_cost, path):
+    def __init__(self, state:City, path_cost, path):
         """
         Initializes a node with a state and parent
         """

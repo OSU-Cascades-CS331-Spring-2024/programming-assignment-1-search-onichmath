@@ -20,13 +20,13 @@ class Map:
         """
         return f"Map(cities={self.cities})"
 
-    def get_city(self, city_name):
+    def get_city(self, city_name:str):
         """
         Returns the city with the given name
         """
         return self.cities[city_name]
 
-    def get_cost(self, city_name1, city_name2):
+    def get_cost(self, city_name1:str, city_name2:str):
         """
         Returns the cost of traveling between two cities
         """
@@ -35,7 +35,7 @@ class Map:
         return city1.get_cost(city2.get_name())
 
     @staticmethod 
-    def map_lines_from_filename(file_name):
+    def map_lines_from_filename(file_name:str):
         file_path = "../map_data/" + file_name + ".txt"
         try:
             with open(file_path, "r") as f:
@@ -47,7 +47,7 @@ class Map:
         return lines
 
     @classmethod
-    def from_file(cls, file_name):
+    def from_file(cls, file_name:str):
         lines = cls.map_lines_from_filename(file_name)
         cities = [City.from_string(line) for line in lines]
         cities_mapped = {city.get_name():city for city in cities}
