@@ -3,7 +3,7 @@ import sys
 from parser import ArgParser
 from agents.bfs import BFSAgent
 from agents.ucs import UCSAgent
-from agents.astar import AStarAgent
+from agents.astar import AStarEuclideanAgent, AStarHaversineAgent
 from agents.iddls import IDDLSAgent
 from models.problem import Problem
 from models.map import Map
@@ -12,28 +12,28 @@ from models.map import Map
 def run_all_algorithms(parser):
     cities = parser.get_cities_names()
     algorithm = parser.get_algorithm()
-    agents = [BFSAgent(), UCSAgent(), IDDLSAgent(), AStarAgent("euclidean"), AStarAgent("haversine")]
-    bfs_agent = BFSAgent()
-    ucs_agent = UCSAgent()
-    iddls_agent = IDDLSAgent()
-    astar_euclidean_agent = AStarAgent()
-    astar_haversine_agent = AStarAgent()
+    agents = [BFSAgent(), UCSAgent(), IDDLSAgent(), AStarEuclideanAgent(), AStarHaversineAgent()]
     print(parser.get_map())
 
     map = Map.from_file(parser.get_map())
 
     for city_pair in cities:
-        print(city_pair)
-        print(1)
         start_city = map.cities[city_pair[0]]
         goal_city = map.cities[city_pair[1]]
         problem = Problem(start_city, goal_city, map)
-        print(2)
-
-        # for agent in agents:
-        #     agent.search(problem)
-        #     print(f"{agent}\n")
-        #     agent.reset_agent()
+        print(f"{problem}\n")
+        costs = []
+        for agent in agents:
+            solution = agent.search(problem)
+            costs.append(solution.path_cost)
+            print(f"{agent}\n")
+            agent.reset_agent()
+        min_cost = min(costs)
+        min_indices = [i for i, x in enumerate(costs) if x == min_cost]
+        for i in min_indices:
+            agents[i].add_optimal_solution()
+    for agent in agents:
+        print(f"{agent.get_class_metrics()}\n")
 
 
 def run_algorithm(parser):
