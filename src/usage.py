@@ -13,7 +13,7 @@ def list_maps_and_cities():
     print()
     for map in maps:
         cities = []
-        with open(f"../map_data/{map}", "r") as f:
+        with open(f"../map_data/{map}.txt", "r") as f:
             lines = f.readlines()
             for line in lines:
                 city = line.split(" ")[0]
