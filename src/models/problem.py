@@ -39,6 +39,7 @@ class Problem():
         """
         Returns the state that results from the given action
         """
+        _ = state
         return action
 
     def action_cost(self, state:City, state_prime:City):
