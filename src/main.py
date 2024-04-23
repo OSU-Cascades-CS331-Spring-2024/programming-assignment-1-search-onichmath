@@ -11,7 +11,6 @@ from models.map import Map
 
 def run_all_algorithms(parser):
     cities = parser.get_cities_names()
-    algorithm = parser.get_algorithm()
     agents = [BFSAgent(), UCSAgent(), IDDLSAgent(), AStarEuclideanAgent(), AStarHaversineAgent()]
     print(parser.get_map())
 
@@ -37,35 +36,50 @@ def run_all_algorithms(parser):
 
 
 def run_algorithm(parser):
-    algorithm = parser.get_algorithm()
-    map = Map.from_file(parser.get_map())
-    cities = parser.get_cities_names()
-    start_city = map.cities[cities[0][0]]
-    goal_city = map.cities[cities[0][1]]
-    problem = Problem(start_city, goal_city, map)
+    try:
+        algorithm = parser.get_algorithm()
+        map = Map.from_file(parser.get_map())
+        cities = parser.get_cities_names()
+        start_city = map.cities[cities[0][0]]
+        goal_city = map.cities[cities[0][1]]
+        problem = Problem(start_city, goal_city, map)
 
-    if algorithm == "bfs":
-        bfs_agent = BFSAgent()
-        solution = bfs_agent.search(problem)
-        print(f"{bfs_agent}\n")
-    elif algorithm == "ucs":
-        ucs_agent = UCSAgent()
-        solution = ucs_agent.search(problem)
-        print(f"{ucs_agent}\n")
-    elif algorithm == "iddls":
-        iddls_agent = IDDLSAgent()
-        solution = iddls_agent.search(problem)
-        print(f"{iddls_agent}\n")
-    elif algorithm == "astar":
-        heuristic = parser.get_heuristic()
-        for h in heuristic:
-            astar_agent = AStarAgent(heuristic=h)
-            solution = astar_agent.search(problem)
-            print(f"{astar_agent}\n")
-            astar_agent.reset_agent()
-    else:
+        if algorithm == "bfs":
+            bfs_agent = BFSAgent()
+            bfs_agent.search(problem)
+            print(f"{bfs_agent}\n")
+        elif algorithm == "ucs":
+            ucs_agent = UCSAgent()
+            ucs_agent.search(problem)
+            print(f"{ucs_agent}\n")
+        elif algorithm == "iddls":
+            iddls_agent = IDDLSAgent()
+            iddls_agent.search(problem)
+            print(f"{iddls_agent}\n")
+        elif algorithm == "astar":
+            heuristic = parser.get_heuristic()
+            if heuristic == ["euclidean"]:
+                astar_agent = AStarEuclideanAgent()
+                astar_agent.search(problem)
+                print(f"{astar_agent}\n")
+            elif heuristic == ["haversine"]:
+                astar_agent = AStarHaversineAgent()
+                astar_agent.search(problem)
+                print(f"{astar_agent}\n")
+            else:
+                astar_agent = AStarEuclideanAgent()
+                astar_agent.search(problem)
+                print(f"{astar_agent}\n")
+                astar_agent.reset_agent()
+                astar_agent = AStarHaversineAgent()
+                astar_agent.search(problem)
+                print(f"{astar_agent}\n")
+                astar_agent.reset_agent()
+        else:
+            raise ValueError("Invalid algorithm")
+    except Exception as e:
+        print(e)
         usage.help()
-
 
 def main():
     parser = ArgParser()
@@ -74,37 +88,5 @@ def main():
     else:
         run_algorithm(parser)
 
-
-
-
-
-
-
 if __name__ == "__main__":
     main()
-    # parser = ArgParser()
-    # map = Map.from_file("france")
-    # start_city = map.cities["brest"]
-    # goal_city = map.cities["nice"]
-    # problem = Problem(start_city, goal_city, map)
-    #
-    # ucs_agent = UCSAgent()
-    # bfs_agent = BFSAgent()
-    # iddls_agent = IDDLSAgent()
-    # astar_agent = AStarAgent()
-    #
-    # ucs_solution = ucs_agent.search(problem)
-    # bfs_solution = bfs_agent.search(problem)
-    # iddls_solution = iddls_agent.search(problem)
-    #
-    # astar_euclidean_solution = astar_agent.search(problem, heuristic="euclidean")
-    # print(f"{astar_agent}\n")
-    # astar_agent.reset_agent()
-    # astar_haversine_solution = astar_agent.search(problem, heuristic="haversine")
-    # print(f"{astar_agent}\n")
-    #
-    #
-    # print(f"{problem}\n")
-    # print(f"{bfs_agent}\n")
-    # print(f"{ucs_agent}\n")
-    # print(f"{iddls_agent}\n")
