@@ -13,3 +13,18 @@ This project is part of the Artificial Intelligence class at Oregon State Univer
  * `IDDLSAgent`: The Iterative Deepening Depth Limited Search Agent explores the map by performing a depth limited search with increasing depth limits starting at 0. The agent explored, expanded, and maintained the most nodes out of all the agents yet found the second fewest optimal solutions. If a heuristic had been utilized to decide the depth limit, the agent would have performed better.
  * `AStarEuclideanAgent`: The A* Euclidean Agent explores the map by expanding the node with the lowest cost f(n) = g(n) + h(n). The heuristic for the Euclidean Agent was the euclidean distance between the considered node and the goal. The euclidean distance was found by converting the latitude and longitude of the nodes to radians and then Cartesian coordinates. The A* Euclidean Agent found the second most optimal solutions, but exhibited efficent exploration due to its heuristic. While the heuristic led to worse performance than UCS, the agent avoided unnecessary exploration and expansion of nodes, focusing on promising paths.
  * `AStarHaversineAgent`: The A* Haversine Agent utilized the Haversine formula to calculate the heuristic cost. The Haversine Agent had equivalent results to the A* Euclidean Agent, suggesting that the distances found by the heuristics were not significantly different.
+
+# Usage
+* add needed map data to `/map_data/` in the specified format
+* `cd /src/`
+* Specific Goals:
+    * `python3 main.py -M <map_name> -S <search_algorithm> -A <start_city> -B <goal_city> -H <heuristic>`
+* Run all agents on specified starts/goals:
+    * `python3 main.py`
+
+# Directories
+* `/map_data/`: Map data in .txt format.
+* `/outputs/`: Output files when run on all agents.
+* `/src/`: Main scripts.
+* `/src/agents/`: Search agents.
+* `/src/models/`: Environment classes.
