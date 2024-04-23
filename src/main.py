@@ -12,27 +12,27 @@ from models.map import Map
 def run_all_algorithms(parser):
     cities = parser.get_cities_names()
     agents = [BFSAgent(), UCSAgent(), IDDLSAgent(), AStarEuclideanAgent(), AStarHaversineAgent()]
-    print(parser.get_map())
-
     map = Map.from_file(parser.get_map())
 
-    for city_pair in cities:
-        start_city = map.cities[city_pair[0]]
-        goal_city = map.cities[city_pair[1]]
-        problem = Problem(start_city, goal_city, map)
-        print(f"{problem}\n")
-        costs = []
+    with open("../outputs/solutions.txt", "w") as f:
+        for city_pair in cities:
+            start_city = map.cities[city_pair[0]]
+            goal_city = map.cities[city_pair[1]]
+            problem = Problem(start_city, goal_city, map)
+            f.write(f"{problem}\n")
+            costs = []
+            for agent in agents:
+                solution = agent.search(problem)
+                costs.append(solution.path_cost)
+                f.write(f"{agent}\n")
+                agent.reset_agent()
+            min_cost = min(costs)
+            min_indices = [i for i, x in enumerate(costs) if x == min_cost]
+            for i in min_indices:
+                agents[i].add_optimal_solution()
+    with open("../README.md", "w") as f:
         for agent in agents:
-            solution = agent.search(problem)
-            costs.append(solution.path_cost)
-            print(f"{agent}\n")
-            agent.reset_agent()
-        min_cost = min(costs)
-        min_indices = [i for i, x in enumerate(costs) if x == min_cost]
-        for i in min_indices:
-            agents[i].add_optimal_solution()
-    for agent in agents:
-        print(f"{agent.get_class_metrics()}\n")
+            f.write(f"{agent.get_class_metrics()}\n")
 
 
 def run_algorithm(parser):
